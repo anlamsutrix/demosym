@@ -1,0 +1,72 @@
+student_role:
+    resource: "@StudentBundle/Resources/config/routing/role.yml"
+    prefix:   /role
+
+student_student:
+    resource: "@StudentBundle/Resources/config/routing/student.yml"
+    prefix:   /student
+
+student_subject:
+    resource: "@StudentBundle/Resources/config/routing/subject.yml"
+    prefix:   /subject
+
+# routes.yml
+school:
+    pattern:  /school
+    defaults: { _controller: StudentBundle:School:index }
+school_slash:
+    pattern:  /school/
+    defaults: { _controller: StudentBundle:School:index }
+
+school_add:
+    path:     /school/add
+    defaults: { _controller: StudentBundle:School:add }
+school_update:
+    path:     /school/update/{id}
+    defaults: { _controller: StudentBundle:School:update }
+school_remove:
+    path:     /school/remove/{id}
+    defaults: { _controller: StudentBundle:School:remove }
+school_get:
+    path:     /school/school/{id}
+    defaults: { _controller: StudentBundle:School:school }
+school_up_position:
+    path:   /school/up
+    defaults: { _controller: StudentBundle:School:up }
+school_down_position:
+    path:   /school/down
+    defaults: { _controller: StudentBundle:School:down }
+
+student_by_school:
+    pattern:  /school/{id}
+    defaults: { _controller: StudentBundle:School:listStudent }
+
+# routes url student
+student:
+    path:  /student
+    defaults: { _controller: StudentBundle:Student:index }
+
+#routes url user
+admin:
+    path:  /
+    defaults: { _controller: "StudentBundle:User:index" }
+
+admin_login:
+    path:  /login
+    defaults: { _controller: StudentBundle:Secured:login }
+admin_security_check:
+    path:  /login_check
+    defaults: { _controller: StudentBundle:Secured:securityCheck }
+admin_logout:
+    path:  /logout
+    defaults: { _controller: StudentBundle:Secured:securityCheck }
+
+sm_user_admin_user:
+    resource: "@StudentBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+sm_subject:
+    resource: "@StudentBundle/Resources/config/routing/subject.yml"
+    prefix:   /subject
+
+
+

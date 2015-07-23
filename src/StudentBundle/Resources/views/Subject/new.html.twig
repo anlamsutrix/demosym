@@ -1,0 +1,21 @@
+   {% extends "StudentBundle::layout.html.twig" %}
+
+{% block title "Symfony - Demos" %}
+
+{% block content %}
+    <h1>Subject creation</h1>
+    {{ form_start(form) }}
+
+{#    {{ form_errors(form.name) }}#}
+     {{ form_row(form.name) }}
+     {{ form_row(form.time) }}
+    {{ form_end(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('subject') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

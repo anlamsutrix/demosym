@@ -1,0 +1,50 @@
+security:
+    encoders:
+#        Symfony\Component\Security\Core\User\User: plaintext
+        StudentBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 12
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        administrators:
+            entity: { class: StudentBundle:User, property: username }
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        admin_login:
+            pattern:  ^/admin/login$
+            security: false
+
+
+        secured_area:
+            pattern:    ^/admin
+            provider: administrators
+            form_login:
+                check_path: admin_security_check
+                login_path: admin_login
+
+                always_use_default_target_path: true
+                default_target_path:            admin_user
+                use_referer:                    true
+            logout:
+                path:   admin_logout
+                target: admin_login
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+#        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

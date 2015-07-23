@@ -1,0 +1,21 @@
+rest:
+    type:     rest
+    prefix:   /api
+    resource: "@RESTBundle/Resources/config/routing.yml"
+
+blog:
+    resource: "@BlogBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+sm_admin:
+    resource: "@StudentBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc

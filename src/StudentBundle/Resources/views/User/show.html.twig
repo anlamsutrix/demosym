@@ -1,0 +1,43 @@
+{% extends "StudentBundle::layout.html.twig" %}
+{% block title "Symfony - Demos" %}
+
+{% block content %}
+    <h1>User</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Username: </th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Email: </th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Isactive: </th>
+                <td>{{ entity.isActive }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                {% for role in entity.roles%}
+                <td>{{ role.name }}</td>
+                {%endfor%}
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_user') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('admin_user_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

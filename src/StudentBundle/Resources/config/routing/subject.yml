@@ -1,0 +1,30 @@
+subject:
+    path:     /
+    defaults: { _controller: "StudentBundle:Subject:index" }
+
+subject_show:
+    path:     /{id}/show
+    defaults: { _controller: "StudentBundle:Subject:show" }
+
+subject_new:
+    path:     /new
+    defaults: { _controller: "StudentBundle:Subject:new" }
+
+subject_create:
+    path:     /create
+    defaults: { _controller: "StudentBundle:Subject:create" }
+    requirements: { _method: post }
+
+subject_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "StudentBundle:Subject:edit" }
+
+subject_update:
+    path:     /{id}/update
+    defaults: { _controller: "StudentBundle:Subject:update" }
+    requirements: { _method: post|put }
+
+subject_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "StudentBundle:Subject:delete" }
+    requirements: { _method: post|delete }

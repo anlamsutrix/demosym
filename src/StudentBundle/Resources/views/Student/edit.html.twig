@@ -1,0 +1,40 @@
+   {% extends "StudentBundle::layout.html.twig" %}
+
+{% block title "Symfony - Demos" %}
+
+{% block content %}
+    <div style="float: left; clear: both">
+    <h1>Student edit</h1>
+        {{ form(edit_form) }}
+        <ul class="record_actions">
+            <li>
+                <a href="{{ path('student') }}">
+                    Back to the list
+                </a>
+            </li>
+            <li>{{ form(delete_form) }}</li>
+        </ul>
+    </div>
+
+    <div style="float: right;">
+    <img src="/uploads/images/{{ entity.image }}" width="170" height="150">
+    <div id="hide"><a id="edit_image" href="javascript:void()">Edit image</a> | <a id="edit_bro" href="javascript:void()">Edit brochure</a></div>
+    <div id="show_edit_image" style="display: none;">
+    {{ form(edit_image_form) }}
+    </div>
+    <div id="show_edit_bpo" style="display: none;">
+    {{ form (edit_brochure_form)}}
+    <div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        $('#edit_image').click(function() {
+            $('#hide').hide();
+            $('#show_edit_image').show();
+        });
+        $('#edit_bro').click(function() {
+            $('#hide').hide();
+            $('#show_edit_bpo').show();
+        });
+    </script>
+{% endblock %}

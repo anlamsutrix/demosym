@@ -1,0 +1,45 @@
+{% extends "TwigBundle::layout.html.twig" %}
+
+{% block head %}
+    <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" />
+{% endblock %}
+
+{% block title 'Demo Bundle' %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-message">
+            <em>Notice</em>: {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {% block content_header %}
+        <ul id="menu">
+            {% block content_header_more %}
+                <li><a href="{{ path('admin_logout') }}">Logout</a></li>
+            {% endblock %}
+        </ul>
+        <div style="clear: both"></div>
+    {% endblock %}
+
+        {% block left %}
+            <div class="block" style="float: left; width: 15%">
+            <h3>Menu</h3><br>
+            {{ knp_menu_render('main') }}
+            <hr>
+            {{ knp_menu_render('side') }}
+            </div>
+        {% endblock %}
+
+    <div class="block" style="float: right; width: 62%">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% if code is defined %}
+        <h2>Code behind this page</h2>
+        <div class="block">
+            <div class="symfony-content">{{ code|raw }}</div>
+        </div>
+    {% endif %}
+{% endblock %}

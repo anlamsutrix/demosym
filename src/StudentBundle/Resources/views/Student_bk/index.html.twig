@@ -1,0 +1,45 @@
+{% extends "StudentBundle::layout.html.twig" %}
+
+{% block title "Symfony - Demos" %}
+
+
+{% block content %}
+    <div style="width: 100%;">
+        <h1 style="float: left; width: 90%" class="title">List Student</h1>
+        <h1 style="float: right; width: 10%"><a href="{{ path("student_add")}}">Add</a></h1>
+    </div>
+        {% block form %}
+            {{ form_widget(form.name) }}
+            {{ form_widget(form.search) }}
+        {%endblock%}
+        <table width="100%">
+            <tr style="background: #E6E6E6; ">
+                <td style="padding:3px 5px;">No.</td>
+                <td>{{ 'School' |trans }}</td>
+                <td>{{ 'name' |trans }}</td>
+                <td>{{ 'Image' |trans }}</td>
+                <td>{{ 'Age' |trans }}</td>
+                <td>{{ 'Render' |trans }}</td>
+            </tr>
+            {% for student in students if student.id%}
+             <tr style="border-bottom: solid 1px #D3D3D3;">
+                <td style="padding:3px 5px;">{{student.id}}</td>
+                <td>{{ student.school.name }}</td>
+                <td>{{ student.name }}</td>
+                <td><img src="/uploads/images/{{ student.image }}" width="70" height="50"></td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.render }}</td>
+                <td></td>
+            </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5"><p>Students not found</p></td>
+                </tr>
+
+            {% endfor %}
+        </table>
+            <div class="navigation">
+                {{ knp_pagination_render(students) }}
+            </div>
+
+{% endblock %}

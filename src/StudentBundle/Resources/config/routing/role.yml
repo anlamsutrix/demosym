@@ -1,0 +1,30 @@
+role:
+    path:     /
+    defaults: { _controller: "StudentBundle:Role:index" }
+
+role_show:
+    path:     /{id}/show
+    defaults: { _controller: "StudentBundle:Role:show" }
+
+role_new:
+    path:     /new
+    defaults: { _controller: "StudentBundle:Role:new" }
+
+role_create:
+    path:     /create
+    defaults: { _controller: "StudentBundle:Role:create" }
+    requirements: { _method: post }
+
+role_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "StudentBundle:Role:edit" }
+
+role_update:
+    path:     /{id}/update
+    defaults: { _controller: "StudentBundle:Role:update" }
+    requirements: { _method: post|put }
+
+role_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "StudentBundle:Role:delete" }
+    requirements: { _method: post|delete }

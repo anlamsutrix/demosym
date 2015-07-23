@@ -1,0 +1,18 @@
+    {% extends "StudentBundle::layout.html.twig" %}
+
+{% block title "Symfony - Demos" %}
+
+
+{% block content %}
+    <div style="width: 100%;" class="title">
+        <h1 style="float: left; width: 90%" >Update School</h1>
+        <h1 style="float: right; width: 10%"><a href="{{path("school")}}">List</a></h1>
+    </div>
+    <br><br>
+    <div><br></div>
+    {% block form %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    {%endblock%}
+{% endblock %}

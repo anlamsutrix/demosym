@@ -1,0 +1,105 @@
+   {% extends "StudentBundle::layout.html.twig" %}
+
+{% block title "Symfony - Demos" %}
+
+{% block content %}
+    <h1>Student list</h1>
+    {% block form %}
+        {{ form_start(form) }}
+            {{ form_widget(form.name) }}
+            {{ form_widget(form.search) }}
+            {{ form_end(form) }}
+        {%endblock%}
+    <table class="records_list" width="100%">
+        <thead>
+            <tr style="background: #E6E6E6; ">
+                <th style="padding:3px 5px;">Id</th>
+                <th>School</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Age</th>
+                <th>Render</th>
+                <th>Position</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for entity in students %}
+            <tr style="border-bottom: solid 1px #D3D3D3;">
+                <td><a href="{{ path('student_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.school.name }}</td>
+                <td>{{ entity.name }}</td>
+                <td><img src="/uploads/images/{{ entity.image }}" width="70" height="50"></td>
+                <td>{{ entity.age }}</td>
+                <td>{{ entity.render }}</td>
+                <td align="center">
+                    {% if (max == entity.position and count > 1)%}
+                        <a href="javascript:void()" onclick="functionDown('{{entity.id }},{{ entity.school.id}}');" id="down">down</a>
+                    {%endif%}
+                    {% if (max != entity.position and min != entity.position and count > 1)%}
+                        <a href="javascript:void()" onclick="functionUp('{{entity.id }},{{ entity.school.id}}');" id="up">up</a> | <a href="javascript:void()" onclick="functionDown('{{entity.id }},{{ entity.school.id}}');" id="down">down</a>
+                    {%endif%}
+                    {% if (min == entity.position and count > 1)%}
+                        <a href="javascript:void()" onclick="functionUp('{{entity.id }},{{ entity.school.id}}');" id="up">up</a>
+                    {%endif%}
+                    {% if (count < 1)%}
+                        <a></a>
+                    {%endif%}
+                </td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('student_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('student_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <div class="navigation" style="float: right">
+                {{ knp_pagination_render(students) }}
+            </div>
+        <ul>
+        <li>
+            <a href="{{ path('student_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+       function functionUp (id){
+            $.ajax({
+                type: 'POST',
+                url: "{{path ('student_up_position')}}",
+                data: {id:id},
+                success: function (data) {
+                    alert(data)
+                    },
+                     complete: function(){ //A function to be called when the request finishes (after success and error callbacks are executed) - from jquery docs
+                        //do smth if you need
+                        document.location.reload();
+                      }
+            });
+        };
+        function functionDown (id){
+            $.ajax({
+                type: 'POST',
+                url: "{{path ('student_down_position')}}",
+                data: {id:id},
+                success: function (data) {
+                    alert(data)
+                    },
+                    complete: function(){ //A function to be called when the request finishes (after success and error callbacks are executed) - from jquery docs
+                        //do smth if you need
+                        document.location.reload();
+                      }
+            });
+        };
+</script>
+    {% endblock %}

@@ -1,0 +1,46 @@
+student:
+    path:     /
+    defaults: { _controller: "StudentBundle:Student:index" }
+
+student_show:
+    path:     /{id}/show
+    defaults: { _controller: "StudentBundle:Student:show" }
+
+student_new:
+    path:     /new
+    defaults: { _controller: "StudentBundle:Student:new" }
+
+student_create:
+    path:     /create
+    defaults: { _controller: "StudentBundle:Student:create" }
+    requirements: { _method: post }
+
+student_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "StudentBundle:Student:edit" }
+
+student_update:
+    path:     /{id}/update
+    defaults: { _controller: "StudentBundle:Student:update" }
+    requirements: { _method: post|put }
+
+student_update_image:
+    path:     /{id}/update-image
+    defaults: { _controller: "StudentBundle:Student:updateImage" }
+    requirements: { _method: post|put }
+
+student_update_brochure:
+    path:     /{id}/update-bpro
+    defaults: { _controller: "StudentBundle:Student:updateBpr" }
+    requirements: { _method: post|put }
+
+student_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "StudentBundle:Student:delete" }
+    requirements: { _method: post|delete }
+student_up_position:
+    path:   /student/up
+    defaults: { _controller: StudentBundle:Student:up }
+student_down_position:
+    path:   /student/down
+    defaults: { _controller: StudentBundle:Student:down }

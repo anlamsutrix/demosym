@@ -1,0 +1,27 @@
+parameters:
+    admin.usermanager: StudentBundle\Manager\UserManager
+    admin.menumanager: StudentBundle\Manager\MenuBuilder
+
+services:
+    bo.admin.user:
+        class:     %admin.usermanager%
+#        arguments: [@doctrine.orm.entity_manager, @service_container, @router]
+        arguments: [@service_container]
+
+    app.menu_builder:
+        class:     %admin.menumanager%
+        arguments: [@knp_menu.factory, @service_container]
+
+    app.main_menu:
+        class: Knp\Menu\MenuItem
+        factory: ["@app.menu_builder", createMainMenu]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: main }
+
+    app.side_menu:
+        class: Knp\Menu\MenuItem
+        factory: ["@app.menu_builder", createSideMenu]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: side }

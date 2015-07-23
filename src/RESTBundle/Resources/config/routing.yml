@@ -1,0 +1,21 @@
+# routes.yml
+get_school:
+    pattern:  /school
+    defaults: { _controller: RESTBundle:SchoolRest:index }
+get_school_by_id:
+    pattern:  /school/{id}
+    defaults: { _controller: RESTBundle:SchoolRest:view, _format: ~ }
+    requirements:
+        _method: GET
+        id: "\d+"
+
+
+get_student:
+    pattern:  /student
+    defaults: { _controller: RESTBundle:StudentRest:index }
+get_student_by_id:
+    pattern:  /student/{id}
+    defaults: { _controller: RESTBundle:StudentRest:view }
+get_student:
+    pattern:  /test
+    defaults: { _controller: RESTBundle:StudentRest:testJsonPostPage }

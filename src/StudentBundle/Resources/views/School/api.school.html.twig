@@ -1,0 +1,31 @@
+{% extends "StudentBundle::layout.html.twig" %}
+
+{% block title "Symfony - Demos" %}
+
+{% block content_header '' %}
+
+{% block content %}
+    <div style="width: 100%;">
+        <h1 style="float: left; width: 90%" class="title">Available demos</h1>
+        <h1 style="float: right; width: 10%"><a href="{{ app.request.getBaseURL() }}/school/add">Add</a></h1>
+    </div>
+        <table width="100%">
+            <tr style="background: #E6E6E6; ">
+                <td style="padding:3px 5px;">No.</td>
+                <td>Name</td>
+                <td>Phone</td>
+                <td>Address</td>
+                <td>Action</td>
+            </tr>
+
+            {% for school in schools %}
+             <tr style="border-bottom: solid 1px #D3D3D3;">
+                <td style="padding:3px 5px;">{{school.id}}</td>
+                <td>{{ school.name }}</td>
+                <td>{{ school.phone }}</td>
+                <td>{{ school.address }}</td>
+                <td><a href="{{ app.request.getBaseURL() }}/school/update/{{school.id}}">Edit</a> | <a href="{{ app.request.getBaseURL() }}/school/remove/{{school.id}}">Remove</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

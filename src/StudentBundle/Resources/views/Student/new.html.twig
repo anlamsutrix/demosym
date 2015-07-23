@@ -1,0 +1,23 @@
+   {% extends "StudentBundle::layout.html.twig" %}
+
+{% block title "Symfony - Demos" %}
+
+{% block content %}
+    <h1>Student creation</h1>
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('student') }}">
+            Back to the list
+        </a>
+    </li>
+</ul><script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script>
+            $('#student_school_id').val($('#student_school').val());
+            $('#student_school').change(function (){
+                var id = $('#student_school').val();
+                $('#student_school_id').val(id);
+            })
+        </script>
+{% endblock %}

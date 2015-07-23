@@ -1,0 +1,76 @@
+{% extends "StudentBundle::layout.html.twig" %}
+
+{% block title "Symfony - Demos" %}
+
+
+{% block content %}
+
+    <div style="width: 100%;">
+        <h1 style="float: left; width: 90%" class="title">Available demos</h1>
+        <h1 style="float: right; width: 10%"><a href="{{ path("school_add") }}">Add</a></h1>
+    </div>
+        <table width="100%">
+            <tr style="background: #E6E6E6; ">
+                <td style="padding:3px 5px;">No.</td>
+                <td>Name</td>
+                <td>Phone</td>
+                <td>Address</td>
+                <td>Position</td>
+                <td>Action</td>
+            </tr>
+
+            {% for school in schools %}
+             <tr style="border-bottom: solid 1px #D3D3D3;">
+                <td style="padding:3px 5px;">{{school.id}}</td>
+                <td><a href="{{ path("student_by_school", {'id': school.id}) }}">{{ school.name }}</a></td>
+                <td>{{ school.phone }}</td>
+                <td>{{ school.address }}</td>
+                <td align="center">
+                    {% if (max == school.position)%}
+                        <a href="javascript:void()" onclick="functionDown('{{school.id}}');" id="down">down</a>
+                    {%endif%}
+                    {% if (max != school.position and min != school.position)%}
+                        <a href="javascript:void()" onclick="functionUp('{{school.id}}');" id="up">up</a> | <a href="javascript:void()" onclick="functionDown('{{school.id}}');" id="down">down</a>
+                    {%endif%}
+                    {% if (min == school.position)%}
+                        <a href="javascript:void()" onclick="functionUp('{{school.id}}');" id="up">up</a>
+                    {%endif%}
+                </td>
+                <td><a href="{{ path("school_update", {'id': school.id})}}">Edit</a> | <a href="{{ path("school_remove", {'id': school.id})}}">Remove</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div  class="navigation">
+                {{ knp_pagination_render(schools) }}
+            </div>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+       function functionUp (id){
+            $.ajax({
+                type: 'POST',
+                url: "{{path ('school_up_position')}}",
+                data: {id:id},
+                success: function (data) {
+                    },
+                     complete: function(){ //A function to be called when the request finishes (after success and error callbacks are executed) - from jquery docs
+                        //do smth if you need
+                        document.location.reload();
+                      }
+            });
+        };
+        function functionDown (id){
+            $.ajax({
+                type: 'POST',
+                url: "{{path ('school_down_position')}}",
+                data: {id:id},
+                success: function (data) {
+                    },
+                    complete: function(){ //A function to be called when the request finishes (after success and error callbacks are executed) - from jquery docs
+                        //do smth if you need
+                        document.location.reload();
+                      }
+            });
+        };
+</script>
+{% endblock %}

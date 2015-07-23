@@ -1,0 +1,84 @@
+menu.export: 'EXPORTER LA BASE'
+menu.new_notification: CRÉER UNE NOTIFICATION
+menu.planing: PLANNING
+menu.history: HISTORIQUE
+menu.counter: COMPTEUR
+
+title.list_article: Les dernières actualités
+title.notification: NOTIFICATION
+title.status: STATUT
+title.notification_planning: CONTENU DE VOTRE NOTIFICATION
+title.envoy: ENVOYÉ LE
+title.kilometers: KM
+title.planning: PLANIFIER
+title.date_time: DATE ET HEURE
+title.day: Jour
+title.month: Mois
+title.year: Année
+title.time: Heure
+title.minute: Minute
+title.password: Mot de passe
+title.email: Email
+title.new: L’actu qui s’ouvrira
+title.timeat: Pour le
+
+description.envoy: Cette notiﬁcation avait été planiﬁée
+description.counter: Pour ajouter des kilomètres supplémentaires au compteur de roulons solidaires, ajoutez dans la case ci- dessous la somme à ajouter.
+description.notification_edit: La notiﬁcation sera envoyée instantanément si vous ne l’avez pas planiﬁée
+description.login: Veuillez vous connecter pour accéder à votre interface de gestion des notiﬁcations
+text.notification: Indiquez le texte de votre notiﬁcation
+
+number.validate_notification_content: 230
+validate.notification_content: caractères maximum
+
+
+link.open_url: OUVRIR URL
+link.launch_notification: LANCER UNE NOTIFICATION
+link.sent: ENVOYÉ
+link.edit: EDITER
+link.remove: SUPPRIMER
+link.notified: NOTIFIÉ
+link.view: VOIR
+
+button.add: AJOUTER
+button.validate: VALIDER
+button.logout: Déconnexion
+button.back: RETOUR
+button.connect: CONNEXION
+button.daskboard: DASKBOARD
+
+mess.counter_insert_success: Insérez le succès!
+mess.counter_insert_false: Ne pas insérer, s'il vous plaît vérifier à nouveau!
+mess.counter_update_success: Enregistrer succès!
+mess.counter_update_false: Ne sauvegardez pas, s'il vous plaît vérifier à nouveau!
+
+mess.noti_insert_success: Insérez le succès!
+
+api.team.nodata: 'No data found'
+api.team.founXItem: 'Found %num% item'
+
+admin.time.error: Cette valeur n'est pas valide.
+mess.validate.number: S'il vous plaît entrer un numéro de 1 à 100,000
+
+email is already in use : email est déjà en cours d'utilisation
+
+'email is already in use' : 'email est déjà en cours d''utilisation'
+'You can''t add more than 3 free sessions per day' : 'Vous ne pouvez pas ajouter plus de 3 séances gratuite par jour'
+
+export.firstname: Prénom
+export.lastname: Nom
+export.email: Email
+export.kilo: Kilomètres
+
+mess.invalid.minitype: Type de fichier non valide
+mess.invalid.filesize: La taille du fichier invalide
+mess.under.find.notification: Impossible de trouver notification.
+
+home.default: Welcome Project
+home.api: API Document
+home.admin: Admin BackOffice
+
+paging.first: Premier
+paging.last: Dernier
+
+user.forgotpass.email.template: 'Username: %username%\r\nPassword: %password%'

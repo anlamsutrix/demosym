@@ -1,0 +1,43 @@
+{% extends "StudentBundle::layout.html.twig" %}
+{% block title "Symfony - Demos" %}
+
+{% block content %}
+    <h1>User list</h1>
+    <table width="100%">
+        <thead>
+            <tr style="background: #E6E6E6;">
+                <th style="padding:3px 5px;">Username</th>
+                <th>Email</th>
+                <th>Isactive</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr style="border-bottom: solid 1px #D3D3D3;">
+                <td><a href="{{ path('admin_user_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.isActive }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_user_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_user_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('admin_user_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

@@ -1,0 +1,19 @@
+    {% extends "StudentBundle::layout.html.twig" %}
+
+{% block title "Symfony - Demos" %}
+
+{% block content_header '' %}
+
+{% block content %}
+    <div  style="width: 100%;" class="title">
+        <h1 style="float: left; width: 90%" >Update Student</h1>
+        <h1 style="float: right; width: 10%"><a href="{{ path("student")}}">List</a></h1>
+    </div>
+    <br><br>
+    <div><br></div>
+    {% block form %}
+        {{form_start(form, {'attr':{'class' : 'form-edit clear-fix'} })}}
+            {{form_widget(form.school)}}
+        {{form_end(form)}}
+    {%endblock%}
+{% endblock %}
