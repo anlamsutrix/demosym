@@ -221,7 +221,7 @@ class SubjectController extends Controller
      */
     private function createDeleteForm($id)
     {
-        echo "testdfghfghdgfhdfghdfghdfghdfghfdgh";
+        echo "test";
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('subject_delete', array('id' => $id)))
             ->setMethod('DELETE')
