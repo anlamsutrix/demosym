@@ -18,11 +18,11 @@ class StudentController extends Controller
     /**
      * Index Action
      * Displays a list Student entity.
+     * document
      *
      */
     public function indexAction(Request $request)
     {
-        echo "add new row aaaaaaaaaaaaa";
         $student = new Student();
         $form = $this->createFormBuilder($student)
                 ->add('name', 'search' , array('required'=> FALSE,
