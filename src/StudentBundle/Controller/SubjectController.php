@@ -226,6 +226,7 @@ class SubjectController extends Controller
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
+                
         ;
     }
 }
