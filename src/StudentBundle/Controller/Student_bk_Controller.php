@@ -22,6 +22,7 @@ class StudentController extends Controller
      */
     public function indexAction(Request $request)
     {
+        echo "lay";
         $student = new Student();
         echo "conflit";
         $form = $this->createFormBuilder($student)
