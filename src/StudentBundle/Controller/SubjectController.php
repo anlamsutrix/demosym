@@ -228,6 +228,5 @@ class SubjectController extends Controller
             ->getForm()
 
         ;
-        echo "demov1";
     }
 }
