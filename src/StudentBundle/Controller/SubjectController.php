@@ -24,7 +24,6 @@ class SubjectController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        echo "test";
         $entities = $em->getRepository('StudentBundle:Subject')->findAll();
         $paginator  = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
