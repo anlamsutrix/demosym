@@ -221,7 +221,10 @@ class SubjectController extends Controller
      */
     private function createDeleteForm($id)
     {
+<<<<<<< .merge_file_2CZyGI
         echo "v2.0";
+=======
+>>>>>>> .merge_file_BQUqXI
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('subject_delete', array('id' => $id)))
             ->setMethod('DELETE')
@@ -229,5 +232,6 @@ class SubjectController extends Controller
             ->getForm()
 
         ;
+        echo "demov1";
     }
 }
