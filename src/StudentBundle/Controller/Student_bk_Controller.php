@@ -22,7 +22,6 @@ class StudentController extends Controller
      */
     public function indexAction(Request $request)
     {
-        echo "add new row";
         $student = new Student();
         $form = $this->createFormBuilder($student)
                 ->add('name', 'search' , array('required'=> FALSE,
