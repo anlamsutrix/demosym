@@ -18,6 +18,7 @@ class StudentController extends Controller
     /**
      * Index Action
      * Displays a list Student entity.
+     * document
      *
      */
     public function indexAction(Request $request)
