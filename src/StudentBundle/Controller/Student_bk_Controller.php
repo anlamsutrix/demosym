@@ -23,7 +23,7 @@ class StudentController extends Controller
      */
     public function indexAction(Request $request)
     {
-        echo "test v2.0 true";
+//        echo "test v2.0 true";
         $student = new Student();
         $form = $this->createFormBuilder($student)
                 ->add('name', 'search' , array('required'=> FALSE,
